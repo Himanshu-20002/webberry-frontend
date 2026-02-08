@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { apiFetch } from "@/app/lib/api";
 
-export default function ContactPage() {
+export default function BookConsultationPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [notes, setNotes] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -19,22 +21,25 @@ export default function ContactPage() {
     setErrorMsg("");
 
     try {
-      await apiFetch("/leads", {
+      await apiFetch("/bookings", {
         method: "POST",
         body: JSON.stringify({
           name,
           email,
           phone,
-          message,
-          source: "contact-page",
+          date,
+          time,
+          notes,
         }),
       });
 
-      setSuccessMsg("Message sent successfully!");
+      setSuccessMsg("Booking request submitted successfully!");
       setName("");
       setEmail("");
       setPhone("");
-      setMessage("");
+      setDate("");
+      setTime("");
+      setNotes("");
     } catch (err: any) {
       setErrorMsg(err.message);
     } finally {
@@ -44,8 +49,8 @@ export default function ContactPage() {
 
   return (
     <>
-      <h1>Contact</h1>
-      <p>Send us your details and we will contact you.</p>
+      <h1>Book Consultation</h1>
+      <p>Select date and time. We will confirm your booking.</p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "500px" }}>
         <input
@@ -69,10 +74,24 @@ export default function ContactPage() {
           style={{ padding: "10px" }}
         />
 
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          style={{ padding: "10px" }}
+        />
+
+        <input
+          placeholder="Time (Example: 11:00 AM)"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          style={{ padding: "10px" }}
+        />
+
         <textarea
-          placeholder="Your Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Notes (optional)"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
           style={{ padding: "10px", minHeight: "120px" }}
         />
 
@@ -84,7 +103,7 @@ export default function ContactPage() {
           disabled={loading}
           style={{ padding: "10px" }}
         >
-          {loading ? "Sending..." : "Submit"}
+          {loading ? "Submitting..." : "Confirm Booking"}
         </button>
       </div>
     </>
