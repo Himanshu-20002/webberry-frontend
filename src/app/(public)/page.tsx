@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { apiFetch } from "@/app/lib/api";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/app/components/ui/button";
+import { Card, CardContent } from "@/app/components/ui/card";
+import { Badge } from "@/app/components/ui/badge";
 
 export default function HomePage() {
   const [testimonials, setTestimonials] = useState<any[]>([]);
@@ -40,8 +40,8 @@ export default function HomePage() {
           </h1>
 
           <p className="text-lg text-muted-foreground">
-            Websites, SEO, ads, and branding — built with premium design and real
-            performance results.
+            Websites, SEO, ads, and branding — built with premium design and
+            real performance results.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">
