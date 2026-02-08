@@ -71,7 +71,7 @@ export default function HomePage() {
         </div>
 
         {/* Hero Card */}
-        <Card className="rounded-2xl border bg-gradient-to-br from-background to-muted shadow-sm">
+        <Card className="rounded-2xl border bg-linear-to-br from-background to-muted shadow-sm">
           <CardContent className="flex flex-col gap-6 p-8">
             <h3 className="text-xl font-semibold">
               Get a complete online growth plan
