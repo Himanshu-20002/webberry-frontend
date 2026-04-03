@@ -1,12 +1,15 @@
-import PublicFooter from "./Footer";
+import Footer from "./Footer";
 import PublicNavbar from "./Navbar";
+import { ContactProvider } from "@/context/ContactContext";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <PublicNavbar />
-      <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
-      <PublicFooter />
-    </div>
+    <ContactProvider>
+      <div className="min-h-screen bg-[#0d0e0c] text-white selection:bg-[#bbff1b] selection:text-[#0d0e0c] overflow-x-hidden">
+        <PublicNavbar />
+        <main className="w-full relative flex flex-col">{children}</main>
+        <Footer />
+      </div>
+    </ContactProvider>
   );
 }
