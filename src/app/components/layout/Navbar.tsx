@@ -5,7 +5,10 @@ import Link from "next/link";
 import { Button } from "@/app/components/ui/button";
 import { motion } from "framer-motion";
 
+import { useContact } from "@/context/ContactContext";
+
 export default function PublicNavbar() {
+  const { openContact } = useContact();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -30,21 +33,32 @@ export default function PublicNavbar() {
           <div className="w-8 h-8 rounded-lg bg-[#bbff1b] flex items-center justify-center shadow-[0_0_15px_rgba(187,255,27,0.4)] group-hover:shadow-[0_0_25px_rgba(187,255,27,0.6)] transition-all">
             <span className="text-[#0d0e0c] font-black text-xl leading-none">W</span>
           </div>
-          <span className="text-2xl font-black tracking-tight text-white">
+          <span className="text-2xl font-black tracking-tight text-white uppercase">
             Web<span className="text-[#bbff1b]">Berry</span>
           </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {["Services", "Portfolio", "Pricing", "Blog", "Contact"].map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
-              className="text-sm font-bold text-neutral-400 hover:text-white transition-colors relative group"
-            >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#bbff1b] rounded-full transition-all group-hover:w-full"></span>
-            </Link>
+             item === "Contact" ? (
+               <button
+                 key={item}
+                 onClick={openContact}
+                 className="text-sm font-bold text-neutral-400 hover:text-white transition-colors relative group"
+               >
+                 {item}
+                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#bbff1b] rounded-full transition-all group-hover:w-full"></span>
+               </button>
+             ) : (
+                <Link
+                  key={item}
+                  href={`/#${item.toLowerCase()}`}
+                  className="text-sm font-bold text-neutral-400 hover:text-white transition-colors relative group"
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#bbff1b] rounded-full transition-all group-hover:w-full"></span>
+                </Link>
+             )
           ))}
         </nav>
 
@@ -53,8 +67,11 @@ export default function PublicNavbar() {
             <Link href="/admin/login">Client Login</Link>
           </Button>
 
-          <Button asChild className="bg-[#bbff1b] hover:bg-[#bbff1b]/90 text-[#0d0e0c] rounded-xl h-10 px-5 font-black uppercase text-xs tracking-wider shadow-[0_0_15px_rgba(187,255,27,0.2)] hover:shadow-[0_0_25px_rgba(187,255,27,0.4)] hover:scale-105 active:scale-95 transition-all">
-            <Link href="/book-consultation">Consultation</Link>
+          <Button 
+            onClick={openContact}
+            className="bg-[#bbff1b] hover:bg-[#bbff1b]/90 text-[#0d0e0c] rounded-xl h-10 px-6 font-black uppercase text-xs tracking-widest shadow-[0_0_20px_rgba(187,255,27,0.2)] hover:shadow-[0_0_35px_rgba(187,255,27,0.4)] hover:scale-105 active:scale-95 transition-all"
+          >
+            CONSULTATION
           </Button>
         </div>
       </div>

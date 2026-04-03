@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
 import Hero from "../components/layout/section/hero";
 import Services from "../components/layout/section/services";
+import Projects from "../components/layout/section/projects";
 import { Portfolio } from "../components/layout/section/Portfolio";
 import Testimonial from "../components/layout/section/testimonial";
 
@@ -44,7 +45,8 @@ export default function HomePage() {
 
 
 
-      <Portfolio />
+      {/* <Portfolio /> */}
+      <Projects />
     </div>
   );
 }

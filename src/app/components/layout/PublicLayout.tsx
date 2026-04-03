@@ -1,6 +1,7 @@
 import Footer from "./Footer";
 import PublicNavbar from "./Navbar";
 import { ContactProvider } from "@/context/ContactContext";
+import { Contact } from "./section/Contact";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,6 +10,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         <PublicNavbar />
         <main className="w-full relative flex flex-col">{children}</main>
         <Footer />
+        <Contact />
       </div>
     </ContactProvider>
   );
