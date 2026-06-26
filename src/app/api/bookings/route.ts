@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
       orderBy: { createdAt: "desc" },
     });
 
-    return NextResponse.json({ data: bookings });
+    return NextResponse.json({ data: { bookings } });
   } catch (error: any) {
     return NextResponse.json(
       { message: error.message || "Internal server error" },

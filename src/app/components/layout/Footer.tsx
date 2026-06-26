@@ -117,7 +117,7 @@ export default function Footer() {
         <div className="flex gap-4 sm:gap-6 whitespace-nowrap order-3">
           <Link href="#" className="hover:underline opacity-80 hover:opacity-100">PRIVACY</Link>
           <Link href="#" className="hover:underline opacity-80 hover:opacity-100">TERMS</Link>
-          <Link href="#" className="hover:underline opacity-80 hover:opacity-100">DEVELOPER</Link>
+          <Link href="/admin/login" className="hover:underline opacity-80 hover:opacity-100">DEVELOPER</Link>
         </div>
       </div>
     </footer>
