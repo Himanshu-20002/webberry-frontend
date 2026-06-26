@@ -63,9 +63,7 @@ export default function PublicNavbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button asChild variant="outline" className="hidden md:inline-flex border-white/10 text-white hover:bg-white/5 hover:border-white/20 hover:text-white rounded-xl h-10 px-5 font-bold transition-all">
-            <Link href="/admin/login">Client Login</Link>
-          </Button>
+
 
           <Button 
             onClick={openContact}
