@@ -22,7 +22,13 @@ export async function verifyToken(token: string) {
 }
 
 export async function getSession(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
+  let token = req.cookies.get("token")?.value;
+  if (!token) {
+    const authHeader = req.headers.get("Authorization");
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.substring(7);
+    }
+  }
   if (!token) return null;
   return verifyToken(token);
 }
